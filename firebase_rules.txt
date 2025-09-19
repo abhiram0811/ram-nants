@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow users to access their own document
+    match /users/{userId} {
+      
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Notes subcollection
+      match /notes/{noteId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+?????????????????? NOT RULES ???????????????????????
+
+NEXT_PUBLIC_FIREBASE_APIKEY=
+NEXT_PUBLIC_FIREBASE_AUTHDOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECTID=
+NEXT_PUBLIC_FIREBASE_STORAGEBUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID=
+NEXT_PUBLIC_FIREBASE_APPID=
