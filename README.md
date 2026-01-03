@@ -1,14 +1,49 @@
-# Ran-Nants Thought Journal
+# Ram-Nants Thought Journal
 
-A simple, clean notes app for capturing and organizing your innovative ideas and random thoughts.
+A simple, clean notes app for capturing and organizing your innovative ideas and random thoughts with full Markdown and Mermaid diagram support.
+
+🌐 **Live App:** [https://ram-nants.netlify.app](https://ram-nants.netlify.app)
 
 ## Features
 
-- 📝 **Simple Text Editor** - Write your thoughts without distractions
+- 📝 **Markdown Editor** - Write your thoughts with full Markdown support
+- 📊 **Mermaid Diagrams** - Render flowcharts, sequence diagrams, and more
 - 🔐 **Secure Authentication** - Firebase-powered user accounts
 - ☁️ **Cloud Storage** - Your notes are saved and synced across devices
 - 🌙 **Dark Theme** - Easy on the eyes for late-night brainstorming
 - 📱 **Responsive Design** - Works on desktop and mobile
+- 👁️ **Live Preview** - Toggle between editor and rendered markdown view
+
+## Markdown Support
+
+Your notes support full GitHub-flavored Markdown:
+
+- **Headers** (`# H1`, `## H2`, `### H3`)
+- **Bold** (`**text**`) and *Italic* (`*text*`)
+- **Lists** (ordered and unordered)
+- **Code blocks** with syntax highlighting
+- **Links** and **Images**
+- **Tables**
+
+### Mermaid Diagrams
+
+Create beautiful diagrams using Mermaid syntax:
+
+~~~markdown
+```mermaid
+flowchart TB
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Action 1]
+    B -->|No| D[Action 2]
+```
+~~~
+
+Supported diagram types:
+- Flowcharts
+- Sequence diagrams
+- Class diagrams
+- State diagrams
+- And more!
 
 ## Getting Started
 
@@ -57,8 +92,10 @@ Open [http://localhost:3000](http://localhost:3000) to start journaling your tho
 
 ## Built With
 
-- [Next.js 15](https://nextjs.org/) - React framework
+- [Next.js 16](https://nextjs.org/) - React framework
 - [Firebase](https://firebase.google.com/) - Authentication and database
+- [markdown-to-jsx](https://www.npmjs.com/package/markdown-to-jsx) - Markdown rendering
+- [Mermaid](https://mermaid.js.org/) - Diagram rendering
 - [Fanta.css](https://github.com/jamezmca/fantacss) - Custom styling
 
 ## License
@@ -67,4 +104,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-*Start capturing your ran-nants (random thoughts) today!* 💭
+*Start capturing your ram-nants (random thoughts) today!* 💭
