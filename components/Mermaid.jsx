@@ -29,7 +29,18 @@ export default function Mermaid({ chart }) {
                     setSvg(svg)
                 } catch (error) {
                     console.error('Mermaid rendering error:', error)
-                    setSvg('<pre style="color: #ff6b6b; padding: 1rem;">Error rendering diagram: ' + error.message + '</pre>')
+                    // Show a helpful error message with the original code
+                    const errorHtml = `
+                        <div style="background: #2d1f1f; border: 1px solid #ff6b6b; border-radius: 8px; padding: 1rem; margin: 1rem 0;">
+                            <p style="color: #ff6b6b; margin: 0 0 0.5rem 0; font-weight: bold;">⚠️ Mermaid Syntax Error</p>
+                            <p style="color: #ffaa88; margin: 0 0 1rem 0; font-size: 0.9rem;">${error.message}</p>
+                            <details style="color: #888;">
+                                <summary style="cursor: pointer; margin-bottom: 0.5rem;">Show raw diagram code</summary>
+                                <pre style="background: #1a1a2e; padding: 1rem; border-radius: 4px; overflow-x: auto; white-space: pre-wrap; color: #ccc;">${chart.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+                            </details>
+                        </div>
+                    `
+                    setSvg(errorHtml)
                 }
             }
         }
