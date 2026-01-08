@@ -4,26 +4,16 @@ import TopNav from "./TopNav";
 import Markdown from "markdown-to-jsx";
 import Mermaid from "./Mermaid";
 
-// Custom Code component to handle mermaid blocks
-function CodeBlock({ className, children }) {
-    // Check if this is a mermaid code block
-    if (className === 'lang-mermaid' || className === 'mermaid') {
-        return <Mermaid chart={children} />
-    }
-    
-    // Regular code block
-    return (
-        <code className={className}>
-            {children}
-        </code>
-    )
-}
-
-// Custom Pre component to extract language from code blocks
+// Custom Pre component to handle code blocks including mermaid
 function PreBlock({ children, ...props }) {
-    // If the child is a code element with mermaid class, render Mermaid
-    if (children?.props?.className === 'lang-mermaid') {
-        return <Mermaid chart={children.props.children} />
+    // Check if this is a code block
+    if (children && typeof children === 'object' && children.props) {
+        const { className, children: code } = children.props;
+        
+        // Check if it's a mermaid code block
+        if (className === 'lang-mermaid' || className === 'language-mermaid') {
+            return <Mermaid chart={code} />
+        }
     }
     
     return <pre {...props}>{children}</pre>
@@ -36,9 +26,6 @@ export default function MDX(props) {
         overrides: {
             pre: {
                 component: PreBlock,
-            },
-            code: {
-                component: CodeBlock,
             },
         },
     }
