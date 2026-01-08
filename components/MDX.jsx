@@ -62,7 +62,7 @@ export default function MDX(props) {
     
     // Check if the entire text is a standalone mermaid diagram (not wrapped in markdown)
     const trimmedText = text.trim();
-    const isStandaloneMermaid = trimmedText && isMermaidDiagram(trimmedText) && !trimmedText.includes('```');
+    const isStandaloneMermaid = trimmedText && isMermaidDiagram(trimmedText) && !trimmedText.includes('\`\`\`');
     
     return (
         <section className="mdx-container">
@@ -70,37 +70,10 @@ export default function MDX(props) {
             <article>
                 {trimmedText ? (
                     isStandaloneMermaid ? (
-                        // Render directly as mermaid if it's a standalone diagram
                         <Mermaid chart={trimmedText} />
                     ) : (
-                        // Otherwise parse as markdown
                         <Markdown options={markdownOptions}>{text}</Markdown>
                     )
-                ) : (
-                    'Hop in the editor to create a new note'
-                )}
-            </article>
-        </section>
-    )
-}
-
-export default function MDX(props) {
-    const { text } = props // gives us access to the text attribute (or the value assigned to it really)
-    
-    const markdownOptions = {
-        overrides: {
-            pre: {
-                component: PreBlock,
-            },
-        },
-    }
-    
-    return (
-        <section className="mdx-container">
-            <TopNav {...props} />
-            <article>
-                {text.trim() ? (
-                    <Markdown options={markdownOptions}>{text}</Markdown>
                 ) : (
                     'Hop in the editor to create a new note'
                 )}
